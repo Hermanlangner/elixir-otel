@@ -21,6 +21,28 @@ defmodule ElixirOtelWeb.Router do
     get "/", PageController, :home
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
+
+    # resources "/users", UserController do
+    #  resources "/posts", PostController
+    # end
+
+    # resources "/comments", CommentController, except: [:delete]
+    # resources "/posts", PostController, only: [:index, :show]
+  end
+
+  scope "/api/swagger" do
+    forward "/", PhoenixSwagger.Plug.SwaggerUI,
+      otp_app: :elixir_otel,
+      swagger_file: "swagger.json"
+  end
+
+  def swagger_info do
+    %{
+      info: %{
+        version: "1.0",
+        title: "My App"
+      }
+    }
   end
 
   # Other scopes may use custom stacks.

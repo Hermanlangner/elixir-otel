@@ -1,0 +1,109 @@
+{
+  "definitions": {
+    "Messenger": {
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "localhost:4009",
+  "info": {
+    "title": "My App",
+    "version": "1.0"
+  },
+  "paths": {
+    "/hello": {
+      "get": {
+        "deprecated": false,
+        "description": "List all messengers in the database",
+        "operationId": "ElixirOtelWeb.HelloController.index",
+        "parameters": [],
+        "produces": [
+          "text/html"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "examples": {
+              "text/html": {
+                "data": [
+                  {
+                    "id": 1,
+                    "inserted_at": "2017-02-08T12:34:55Z",
+                    "message": "Hello World",
+                    "name": "Joe",
+                    "updated_at": "2017-02-12T13:45:23Z"
+                  },
+                  {
+                    "id": 2,
+                    "inserted_at": "2017-02-04T11:24:45Z",
+                    "message": "Hello World",
+                    "name": "Jack",
+                    "updated_at": "2017-02-15T23:15:43Z"
+                  }
+                ]
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/MessengersResponse"
+            }
+          }
+        },
+        "summary": "List Messengers",
+        "tags": [
+          "Hello"
+        ]
+      }
+    },
+    "/hello/:messenger": {
+      "get": {
+        "deprecated": false,
+        "description": "List all users in the database",
+        "operationId": "ElixirOtelWeb.HelloController.show",
+        "parameters": [],
+        "produces": [
+          "text/html"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "examples": {
+              "text/html": {
+                "data": [
+                  {
+                    "email": "Joe6@mail.com",
+                    "id": 1,
+                    "inserted_at": "2017-02-08T12:34:55Z",
+                    "name": "Joe",
+                    "updated_at": "2017-02-12T13:45:23Z"
+                  },
+                  {
+                    "email": "Jack7@mail.com",
+                    "id": 2,
+                    "inserted_at": "2017-02-04T11:24:45Z",
+                    "name": "Jack",
+                    "updated_at": "2017-02-15T23:15:43Z"
+                  }
+                ]
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/UsersResponse"
+            }
+          }
+        },
+        "summary": "List Users",
+        "tags": [
+          "Hello"
+        ]
+      }
+    }
+  },
+  "swagger": "2.0"
+}
