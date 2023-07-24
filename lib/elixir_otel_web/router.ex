@@ -2,7 +2,7 @@ defmodule ElixirOtelWeb.Router do
   use ElixirOtelWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, html: {ElixirOtelWeb.Layouts, :root}
@@ -15,6 +15,10 @@ defmodule ElixirOtelWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    # plug HelloWeb.Authentication
+  end
+
   scope "/", ElixirOtelWeb do
     pipe_through :browser
 
@@ -22,15 +26,12 @@ defmodule ElixirOtelWeb.Router do
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
 
-    # resources "/users", UserController do
-    #  resources "/posts", PostController
-    # end
-
-    # resources "/comments", CommentController, except: [:delete]
-    # resources "/posts", PostController, only: [:index, :show]
+    get "/redirect_test", PageController, :redirect_test
   end
 
   scope "/api/swagger" do
+    pipe_through :api
+
     forward "/", PhoenixSwagger.Plug.SwaggerUI,
       otp_app: :elixir_otel,
       swagger_file: "swagger.json"

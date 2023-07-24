@@ -1,6 +1,12 @@
 {
+  "info": {
+    "version": "1.0",
+    "title": "My App"
+  },
+  "host": "localhost:4009",
   "definitions": {
     "Messenger": {
+      "type": "object",
       "properties": {
         "message": {
           "type": "string"
@@ -8,14 +14,8 @@
         "name": {
           "type": "string"
         }
-      },
-      "type": "object"
+      }
     }
-  },
-  "host": "localhost:4009",
-  "info": {
-    "title": "My App",
-    "version": "1.0"
   },
   "paths": {
     "/hello": {

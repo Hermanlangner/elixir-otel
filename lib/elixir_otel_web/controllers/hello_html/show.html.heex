@@ -1,3 +1,22 @@
 <section>
-  <h2> Hello World, from <%= @messenger %>!</h2>
+  <.greet messenger={@messenger} />
+
+  <table>
+    <tr>
+      <th>Number</th>
+      <th>Power</th>
+    </tr>
+    <%= for number <- 1..10 do %>
+      <tr>
+        <td>
+          <%= number %>
+        </td>
+        <td>
+          <%= number * number %>
+        </td>
+      </tr>
+      <% end %>
+  </table>
+
+  <%= raw "<b>Bold?</b>" %>
 </section>

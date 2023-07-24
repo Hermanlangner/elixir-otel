@@ -79,6 +79,10 @@ defmodule ElixirOtelWeb.HelloController do
   end
 
   def show(conn, %{"messenger" => messenger}) do
-    render(conn, "show.html", messenger: messenger)
+    conn
+    |> assign(:messenger, messenger)
+    |> assign(:username, "joe")
+    |> assign(:receiver, "Dweezil")
+    |> render("show.html")
   end
 end
