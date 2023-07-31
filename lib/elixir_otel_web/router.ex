@@ -27,6 +27,8 @@ defmodule ElixirOtelWeb.Router do
     get "/hello/:messenger", HelloController, :show
 
     get "/redirect_test", PageController, :redirect_test
+
+    resources "/products", ProductController
   end
 
   scope "/api/swagger" do
